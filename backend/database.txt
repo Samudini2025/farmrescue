@@ -1,0 +1,7 @@
+farmrescue_user=vhAuGGQ2wAb8nuC6
+
+
+
+MONGODB_URI="mongodb+srv://farmrescue_user:vhAuGGQ2wAb8nuC6@farmrescuedbcluster.enrg5ho.mongodb.net"
+
+mongodb+srv://<db_username>:<db_password>@farmrescuedbcluster.enrg5ho.mongodb.net/
