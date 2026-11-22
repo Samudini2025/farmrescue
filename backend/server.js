@@ -4,7 +4,7 @@ import mongoose from "mongoose"
 
 const app = express();
 const PORT = 5000
-const MONGODB_URI="mongodb+srv://farmrescue_user:AVrDucgNPOwfF9S5@farmrescuedbcluster.enrg5ho.mongodb.net"
+const MONGODB_URI="mongodb+srv://tharinduln2004_db_user:BKGIQVmrf1J6qBJP@cluster0.fgcwasv.mongodb.net"
 
 
 app.use(express.json())
