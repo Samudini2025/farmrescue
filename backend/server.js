@@ -1,7 +1,8 @@
 import express from "express"
-import mongoose, { connect } from "mongoose"
+import mongoose from "mongoose"
 import User from "./models/User.js"
 import dotenv from "dotenv"
+import userRoutes from "./routes/userRoutes.js"
 
 
 dotenv.config();
@@ -9,14 +10,9 @@ const app = express();
 const PORT = 5000
 const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.Connection(MONGODB_URI).then(()=>{
-    console.log("Connected to mongoDB");
-}).catch((error)=>{
-    console.log("Error connecting to mongoDB:",error);
-})
-
 
 app.use(express.json())
+app.use("/api/users", userRoutes)
 
 app.get("/", (req, res) => {
     res.send("Welcome to FarmRescue API!")
@@ -36,7 +32,7 @@ app.post("/",(req,res)=>{
     console.log(message)
 })
 
-app.get("/test-user", async (req, res) => {
+/*app.get("/test-user", async (req, res) => {
     try {
         const user = new User({
             name: "Kamal Perera",
@@ -54,7 +50,7 @@ app.get("/test-user", async (req, res) => {
     } catch (error) {
         res.status(500).send(error.message)
     }
-})
+})*/
 
 app.listen(PORT,()=>{
     console.log(`Server running on ${PORT}`)
