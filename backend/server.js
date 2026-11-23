@@ -1,13 +1,19 @@
 import express from "express"
-import mongoose from "mongoose"
+import mongoose, { connect } from "mongoose"
 import User from "./models/User.js"
+import dotenv from "dotenv"
 
 
-
+dotenv.config();
 const app = express();
 const PORT = 5000
-// const MONGODB_URI="mongodb+srv://tharinduln2004_db_user:fsbu6BzHKqHXATPb@cluster0.f4o7r9x.mongodb.net/"
-const MONGODB_URI="mongodb+srv://samudiniiresha_db_user:aQXkKN5mwhFd8TR7@cluster0.llgbrnq.mongodb.net/"
+const MONGODB_URI = process.env.MONGODB_URI;
+
+mongoose.Connection(MONGODB_URI).then(()=>{
+    console.log("Connected to mongoDB");
+}).catch((error)=>{
+    console.log("Error connecting to mongoDB:",error);
+})
 
 
 app.use(express.json())
@@ -16,9 +22,9 @@ app.get("/", (req, res) => {
     res.send("Welcome to FarmRescue API!")
 })
 
-mongoose.connect(MONGODB_URI).then(()=>{
+mongoose.connect(MONGODB_URI).then(()=>
     console.log("Database connected successfully")
-}).catch((error)=>{
+).catch((error)=>{
     console.log("MongoDB connection error ",error)
 })
 
